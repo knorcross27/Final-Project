@@ -9,6 +9,12 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
+void temperatureSensorInit();
+void temperatureSensorUpdate();
+float temperatureSensorReadCelsius();
+float temperatureSensorReadFahrenheit();
+float celsiusToFahrenheit( float tempInCelsiusDegrees );
+
 //=====[#include guards - end]=================================================
 
 #endif // _Temp_Sensor_h_

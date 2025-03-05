@@ -9,6 +9,9 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
+void gasSensorInit();
+void gasSensorUpdate();
+bool gasSensorRead();
 
 //=====[#include guards - end]=================================================
 

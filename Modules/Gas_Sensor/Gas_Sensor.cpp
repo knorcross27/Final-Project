@@ -2,12 +2,15 @@
 
 #include "mbed.h"
 #include "arm_book_lib.h"
+#include "Gas_Sensor.h"
 
 //=====[Declaration of private defines]========================================
 
 //=====[Declaration of private data types]=====================================
 
 //=====[Declaration and initialization of public global objects]===============
+
+DigitalIn Gas_Sensor(PE_12);
 
 //=====[Declaration of external public global variables]=======================
 
@@ -18,3 +21,16 @@
 //=====[Declarations (prototypes) of private functions]========================
 
 //=====[Implementations of public functions]===================================
+
+void gasSensorInit() 
+{
+}
+
+void gasSensorUpdate()
+{
+}
+
+bool gasSensorRead()
+{
+    return Gas_Sensor;
+}
