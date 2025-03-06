@@ -8,6 +8,8 @@
 //=====[Declaration of public data types]======================================
 
 //=====[Declarations (prototypes) of public functions]=========================
+void toasterAlertSystemInit();
+void toasterAlertSystemUpdate();
 
 //=====[#include guards - end]=================================================
 
