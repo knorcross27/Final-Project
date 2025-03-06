@@ -13,7 +13,7 @@
 
 //=====[Declaration and initialization of public global objects]===============
 
-AnalogIn Temp_Sensor(A1);
+AnalogIn Temp_Sensor(A0);
 
 //=====[Declaration of external public global variables]=======================
 
