@@ -25,4 +25,5 @@
 //=====[Declarations (prototypes) of private functions]========================
 
 //=====[Implementations of public functions]===================================
-void 
+void toasterAlertSystemInit() {
+  
