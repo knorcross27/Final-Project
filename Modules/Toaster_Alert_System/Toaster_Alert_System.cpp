@@ -27,4 +27,7 @@
 //=====[Implementations of public functions]===================================
 void toasterAlertSystemInit() {
   alarmSystemInit();
+  gasSensorInit();
+  
+
 
