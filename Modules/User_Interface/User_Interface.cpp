@@ -28,7 +28,7 @@ bool toasterOn = false;
 //=====[Declarations (prototypes) of private functions]========================
 
 //=====[Implementations of public functions]===================================
-void InputsInIt() {
+void inputsInit() {
 Button.mode(PullDown);
 Switch.mode(PullDown);
 }
