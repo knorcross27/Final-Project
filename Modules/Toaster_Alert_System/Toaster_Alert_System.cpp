@@ -30,6 +30,14 @@ void toasterAlertSystemInit() {
   gasSensorInit();
   displayInit();
   tempSensorInit();
+  inputsInit();
+}
+
+void toasterAlertSystemUpdate() {
+  
+}
+
+
   
 
 
