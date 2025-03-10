@@ -108,15 +108,10 @@ if (alarmState(true)){
 else {
     displayCharPositionWrite ( 8,1 );
     displayStringWrite( "SAFE" );
+
 }
 
  std::string levelString = getToastLevelString();
     displayCharPositionWrite(8, 0);
     displayStringWrite(levelString.c_str());
 }
-
-
-
-
-
-
