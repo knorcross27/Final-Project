@@ -9,6 +9,10 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
+void alarmSystemInit();
+void alarmSystemUpdate();
+void alarmState(bool state);
+
 //=====[#include guards - end]=================================================
 
 #endif // _Alarm_h_

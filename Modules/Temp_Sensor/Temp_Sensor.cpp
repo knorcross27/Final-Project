@@ -3,17 +3,17 @@
 #include "mbed.h"
 #include "arm_book_lib.h"
 #include "Temp_Sensor.h"
-#include "Toaster_Alert_System.h"
 
 //=====[Declaration of private defines]========================================
 
-#define Temp_Sensor_NUMBER_OF_AVG_SAMPLES    10
+// number of samples taken to determine average reading
+#define Temp_Sensor_SAMPLES    10
 
 //=====[Declaration of private data types]=====================================
 
 //=====[Declaration and initialization of public global objects]===============
 
-AnalogIn Temp_Sensor(A0);
+AnalogIn T_Sensor(A0);
 
 //=====[Declaration of external public global variables]=======================
 
@@ -22,7 +22,7 @@ AnalogIn Temp_Sensor(A0);
 //=====[Declaration and initialization of private global variables]============
 
 float TempC = 0.0;
-float TempSensorReadingsArray[Temp_Sensor_NUMBER_OF_AVG_SAMPLES];
+float TempSensorReadings[Temp_Sensor_SAMPLES];
 
 //=====[Declarations (prototypes) of private functions]========================
 
@@ -30,15 +30,17 @@ static float analogReadingScaledWithTheLM35Formula( float analogReading );
 
 //=====[Implementations of public functions]===================================
 
+//initializes sensor
 void tempSensorInit()
 {
     int i;
     
-    for( i=0; i<Temp_Sensor_NUMBER_OF_AVG_SAMPLES ; i++ ) {
-        TempSensorReadingsArray[i] = 0;
+    for( i=0; i<Temp_Sensor_SAMPLES ; i++ ) {
+        TempSensorReadings[i] = 0;
     }
 }
 
+//updates sensor
 void temperatureSensorUpdate()
 {
     static int TempSensorSampleIndex = 0;
@@ -47,30 +49,33 @@ void temperatureSensorUpdate()
 
     int i = 0;
 
-    TempSensorReadingsArray[TempSensorSampleIndex] = Temp_Sensor.read();
+    TempSensorReadings[TempSensorSampleIndex] = T_Sensor.read();
        TempSensorSampleIndex++;
-    if ( TempSensorSampleIndex >= Temp_Sensor_NUMBER_OF_AVG_SAMPLES) {
+    if ( TempSensorSampleIndex >= Temp_Sensor_SAMPLES) {
         TempSensorSampleIndex = 0;
     }
     
    TempSensorReadingsSum = 0.0;
-    for (i = 0; i < Temp_Sensor_NUMBER_OF_AVG_SAMPLES; i++) {
-        TempSensorReadingsSum = TempSensorReadingsSum + TempSensorReadingsArray[i];
+    for (i = 0; i < Temp_Sensor_SAMPLES; i++) {
+        TempSensorReadingsSum = TempSensorReadingsSum + TempSensorReadings[i];
     }
-    TempSensorReadingsAverage = TempSensorReadingsSum / Temp_Sensor_NUMBER_OF_AVG_SAMPLES;
+    TempSensorReadingsAverage = TempSensorReadingsSum / Temp_Sensor_SAMPLES;
        TempC = analogReadingScaledWithTheLM35Formula ( TempSensorReadingsAverage );    
 }
 
+//returns temperature average in celcius
 float temperatureSensorReadCelsius()
 {
     return TempC;
 }
 
+// convert celcius to fahrenheit
 float celsiusToFahrenheit( float tempInCelsiusDegrees )
 {
     return ( tempInCelsiusDegrees * 9.0 / 5.0 + 32.0 );
 }
 
+//returns temperature average in fahrenheit
 float temperatureSensorReadFahrenheit()
 {
     return celsiusToFahrenheit( TempC );
@@ -78,6 +83,7 @@ float temperatureSensorReadFahrenheit()
 
 //=====[Implementations of private functions]==================================
 
+//voltage scaling to 3.3V 
 static float analogReadingScaledWithTheLM35Formula( float analogReading )
 {
     return ( analogReading * 3.3 / 0.01 );

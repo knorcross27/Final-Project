@@ -2,6 +2,13 @@
 
 #include "mbed.h"
 #include "arm_book_lib.h"
+#include "Alarm.h"
+#include "Gas_Sensor.h"
+#include "LCD.h"
+#include "PC_Serial_Com.h"
+#include "Temp_Sensor.h"
+#include "Timer.h"
+#include "User_Interface.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -18,3 +25,24 @@
 //=====[Declarations (prototypes) of private functions]========================
 
 //=====[Implementations of public functions]===================================
+
+// runs all initializations
+void toasterAlertSystemInit() {
+  displayInit();
+  userInterfaceInit()
+  alarmSystemInit();
+  gasSensorInit();
+  tempSensorInit();
+  timerInit();
+}
+
+// runs all updates
+void toasterAlertSystemUpdate() {
+  //displayUpdate();
+  inputsUpdate();
+  userInterfaceUpdate()
+  alarmSystemUpdate();
+  gasSensorUpdate();
+  tempSensorUpdate();
+  timerUpdate();
+}

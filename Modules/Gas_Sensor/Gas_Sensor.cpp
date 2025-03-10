@@ -22,14 +22,17 @@ DigitalIn Gas_Sensor(PE_12);
 
 //=====[Implementations of public functions]===================================
 
+//initializes sensor
 void gasSensorInit() 
 {
 }
 
+//updates sensor
 void gasSensorUpdate()
 {
 }
 
+//returns value of sensor reading
 bool gasSensorRead()
 {
     return Gas_Sensor;
