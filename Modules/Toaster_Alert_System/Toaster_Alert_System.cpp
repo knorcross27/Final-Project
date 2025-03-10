@@ -46,7 +46,3 @@ void toasterAlertSystemUpdate() {
   tempSensorUpdate();
   timerUpdate();
 }
-
-  
-
-
