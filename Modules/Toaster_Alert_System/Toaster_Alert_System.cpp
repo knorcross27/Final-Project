@@ -25,24 +25,27 @@
 //=====[Declarations (prototypes) of private functions]========================
 
 //=====[Implementations of public functions]===================================
+
+// runs all initializations
 void toasterAlertSystemInit() {
+  displayInit();
+  userInterfaceInit()
   alarmSystemInit();
   gasSensorInit();
-  displayInit();
   tempSensorInit();
   timerInit();
-  inputsInit();
 }
 
+// runs all updates
 void toasterAlertSystemUpdate() {
+  //displayUpdate();
+  inputsUpdate();
+  userInterfaceUpdate()
   alarmSystemUpdate();
   gasSensorUpdate();
-  displayUpdate();
   tempSensorUpdate();
   timerUpdate();
-  inputsUpdate();
 }
-
 
   
 
